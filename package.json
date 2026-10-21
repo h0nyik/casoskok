@@ -10,7 +10,8 @@
     "desktop:build:windows": "tauri build --bundles msi,nsis",
     "desktop:dev": "tauri dev",
     "start": "python3 -m http.server 4173",
-    "serve": "python3 -m http.server 4173"
+    "serve": "python3 -m http.server 4173",
+    "tauri": "tauri"
   },
   "keywords": [
     "pwa",
