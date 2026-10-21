@@ -31,7 +31,14 @@
   },
   "bundle": {
     "active": true,
-    "targets": "all",
+    "targets": [
+      "app",
+      "dmg",
+      "msi",
+      "nsis",
+      "deb",
+      "appimage"
+    ],
     "category": "Utility",
     "icon": [
       "icons/icon.png",
