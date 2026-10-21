@@ -1,0 +1,42 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Hodinový skokan",
+  "version": "0.1.0",
+  "identifier": "cz.roztisk.hodinovy-skokan",
+  "build": {
+    "beforeDevCommand": "npm start",
+    "beforeBuildCommand": "npm run build",
+    "devUrl": "http://localhost:4173",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "Hodinový skokan",
+        "width": 420,
+        "height": 680,
+        "minWidth": 360,
+        "minHeight": 560,
+        "resizable": true,
+        "fullscreen": false,
+        "alwaysOnTop": true,
+        "center": true,
+        "decorations": true,
+        "visible": true
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "category": "Utility",
+    "shortDescription": "Spočítá, kolik bude hodin za zadaný počet hodin.",
+    "longDescription": "Hodinový skokan je minimalistická časová utilita s tmavým režimem, PWA instalací a desktopovým oknem vždy navrchu.",
+    "macOS": {
+      "minimumSystemVersion": "10.15"
+    }
+  }
+}

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0b130d" />
+    <meta
+      name="description"
+      content="Minimalistický doplněk pro okamžitý výpočet, kolik bude hodin za zadaný počet hodin."
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Hodinový skokan" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="./assets/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="./assets/icon.svg" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Hodinový skokan</title>
+  </head>
+  <body>
+    <main class="shell" aria-labelledby="app-title">
+      <section class="card" aria-live="polite">
+        <div class="glow glow-one" aria-hidden="true"></div>
+        <div class="glow glow-two" aria-hidden="true"></div>
+
+        <header class="hero">
+          <p class="eyebrow">Okamžitý časový skok</p>
+          <h1 id="app-title">Hodinový skokan</h1>
+          <p class="subtitle">Zadej počet hodin a hned uvidíš, kolik bude.</p>
+        </header>
+
+        <form class="time-form" id="time-form">
+          <label for="hours-input">Přičíst k aktuálnímu času</label>
+          <div class="input-row">
+            <input
+              id="hours-input"
+              name="hours"
+              type="number"
+              inputmode="decimal"
+              min="0"
+              step="0.25"
+              placeholder="17"
+              autocomplete="off"
+              aria-describedby="input-help"
+            />
+            <span class="suffix" aria-hidden="true">hod</span>
+          </div>
+          <p id="input-help" class="hint">Funguje i s desetinným číslem, třeba 1.5.</p>
+          <button type="submit">Spočítat</button>
+        </form>
+
+        <section class="result-panel" aria-label="Výsledek">
+          <output id="target-time" class="target-time">--:--</output>
+          <p id="result-copy" class="result-copy">Zadej počet hodin a stiskni Spočítat.</p>
+        </section>
+
+        <footer class="meta">
+          <span id="current-time">Teď --:--</span>
+          <button class="ghost-button" type="button" id="theme-toggle" aria-pressed="false">
+            Režim
+          </button>
+        </footer>
+      </section>
+    </main>
+
+    <script src="./app.js" type="module"></script>
+  </body>
+</html>

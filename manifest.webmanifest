@@ -1,0 +1,36 @@
+{
+  "name": "Hodinový skokan",
+  "short_name": "Skokan",
+  "description": "Minimalistický časový doplněk: kolik bude hodin za zadaný počet hodin.",
+  "lang": "cs",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "orientation": "portrait",
+  "background_color": "#050806",
+  "theme_color": "#0b130d",
+  "icons": [
+    {
+      "src": "./assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Spočítat čas",
+      "short_name": "Spočítat",
+      "description": "Otevřít Hodinového skokana.",
+      "url": "./",
+      "icons": [
+        {
+          "src": "./assets/icon.svg",
+          "sizes": "any",
+          "type": "image/svg+xml"
+        }
+      ]
+    }
+  ]
+}

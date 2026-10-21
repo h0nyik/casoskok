@@ -1,0 +1,17 @@
+[package]
+name = "hodinovy-skokan"
+version = "0.1.0"
+description = "Minimalistická desktopová aplikace pro výpočet času."
+authors = ["roztisk"]
+edition = "2021"
+license = "UNLICENSED"
+
+[lib]
+name = "hodinovy_skokan_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }

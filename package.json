@@ -1,0 +1,26 @@
+{
+  "name": "hodinovy-skokan",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Minimalistická PWA pro výpočet, kolik bude hodin za zadaný počet hodin.",
+  "scripts": {
+    "build": "node scripts/build-dist.mjs",
+    "desktop:build": "tauri build",
+    "desktop:build:mac": "tauri build --bundles app,dmg --target universal-apple-darwin",
+    "desktop:build:windows": "tauri build --bundles msi,nsis",
+    "desktop:dev": "tauri dev",
+    "start": "python3 -m http.server 4173",
+    "serve": "python3 -m http.server 4173"
+  },
+  "keywords": [
+    "pwa",
+    "cas",
+    "hodiny",
+    "widget"
+  ],
+  "author": "",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.10.1"
+  }
+}
