@@ -33,6 +33,10 @@
     "active": true,
     "targets": "all",
     "category": "Utility",
+    "icon": [
+      "icons/icon.png",
+      "icons/icon.ico"
+    ],
     "shortDescription": "Spočítá, kolik bude hodin za zadaný počet hodin.",
     "longDescription": "Hodinový skokan je minimalistická časová utilita s tmavým režimem, PWA instalací a desktopovým oknem vždy navrchu.",
     "macOS": {
