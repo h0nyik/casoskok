@@ -2,14 +2,30 @@ use tauri::{
     image::Image,
     menu::{Menu, MenuItem},
     tray::{MouseButton, MouseButtonState, TrayIconBuilder, TrayIconEvent},
-    AppHandle, Manager, PhysicalPosition, Rect, WebviewWindow, WindowEvent,
+    AppHandle, Manager, PhysicalPosition, Position, Rect, Size, WebviewWindow, WindowEvent,
 };
 use tauri_plugin_autostart::ManagerExt as AutostartExt;
-use tauri_plugin_process::RestartExt;
 use tauri_plugin_updater::UpdaterExt;
 
 #[cfg(desktop)]
 use tauri_plugin_autostart::MacosLauncher;
+
+fn position_coords(position: Position) -> (i32, i32) {
+    match position {
+        Position::Physical(point) => (point.x, point.y),
+        Position::Logical(point) => (point.x as i32, point.y as i32),
+    }
+}
+
+fn size_dims(size: Size) -> (i32, i32) {
+    match size {
+        Size::Physical(size) => (
+            i32::try_from(size.width).unwrap_or(0),
+            i32::try_from(size.height).unwrap_or(0),
+        ),
+        Size::Logical(size) => (size.width as i32, size.height as i32),
+    }
+}
 
 fn toggle_window(app: &AppHandle, tray_rect: Option<Rect>) {
     if let Some(window) = app.get_webview_window("main") {
@@ -24,10 +40,8 @@ fn toggle_window(app: &AppHandle, tray_rect: Option<Rect>) {
 fn show_near_tray(window: &WebviewWindow, tray_rect: Option<Rect>) {
     if let Some(rect) = tray_rect {
         if let Ok(size) = window.outer_size() {
-            let icon_x = rect.position.x;
-            let icon_y = rect.position.y;
-            let icon_w = i32::try_from(rect.size.width).unwrap_or(0);
-            let icon_h = i32::try_from(rect.size.height).unwrap_or(0);
+            let (icon_x, icon_y) = position_coords(rect.position);
+            let (icon_w, icon_h) = size_dims(rect.size);
             let win_w = i32::try_from(size.width).unwrap_or(360);
             let win_h = i32::try_from(size.height).unwrap_or(520);
 
