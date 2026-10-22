@@ -1,6 +1,6 @@
 [package]
 name = "hodinovy-skokan"
-version = "0.2.2"
+version = "0.2.3"
 description = "Minimalistická tray utilita pro výpočet času."
 authors = ["roztisk"]
 edition = "2021"

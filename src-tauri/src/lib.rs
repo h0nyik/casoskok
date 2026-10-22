@@ -42,8 +42,8 @@ fn show_near_tray(window: &WebviewWindow, tray_rect: Option<Rect>) {
         if let Ok(size) = window.outer_size() {
             let (icon_x, icon_y) = position_coords(rect.position);
             let (icon_w, icon_h) = size_dims(rect.size);
-            let win_w = i32::try_from(size.width).unwrap_or(360);
-            let win_h = i32::try_from(size.height).unwrap_or(520);
+            let win_w = i32::try_from(size.width).unwrap_or(400);
+            let win_h = i32::try_from(size.height).unwrap_or(680);
 
             let x = icon_x + (icon_w / 2) - (win_w / 2);
             let y = if icon_y > 120 {

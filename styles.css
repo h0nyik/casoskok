@@ -37,6 +37,7 @@ html,
 body {
   min-height: 100%;
   margin: 0;
+  overflow: hidden;
 }
 
 body {
@@ -49,21 +50,92 @@ body {
   overflow: hidden;
 }
 
+html[data-desktop="true"],
+html[data-desktop="true"] body {
+  height: 100%;
+  max-height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
 html[data-desktop="true"] body {
   background: var(--bg);
 }
 
 html[data-desktop="true"] .shell {
+  display: block;
+  height: 100%;
+  min-height: 0;
   padding: 0;
-  min-height: 100vh;
+  overflow: hidden;
 }
 
 html[data-desktop="true"] .card {
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  min-height: 100vh;
+  height: 100%;
+  min-height: 0;
+  padding: 1.1rem 1.15rem 0.95rem;
   border: 0;
   border-radius: 0;
   box-shadow: none;
+  overflow: hidden;
+}
+
+html[data-desktop="true"] h1 {
+  font-size: 2.35rem;
+}
+
+html[data-desktop="true"] .eyebrow {
+  margin-bottom: 0.45rem;
+}
+
+html[data-desktop="true"] .subtitle {
+  margin-top: 0.65rem;
+  font-size: 0.92rem;
+}
+
+html[data-desktop="true"] .time-form {
+  gap: 0.55rem;
+  margin-top: 1.15rem;
+}
+
+html[data-desktop="true"] input {
+  padding: 0.9rem 4.2rem 0.9rem 1rem;
+}
+
+html[data-desktop="true"] button {
+  min-height: 3rem;
+}
+
+html[data-desktop="true"] .result-panel {
+  gap: 0.55rem;
+  margin-top: 0.85rem;
+  padding: 0.9rem 1rem;
+}
+
+html[data-desktop="true"] .target-time {
+  font-size: 1.7rem;
+}
+
+html[data-desktop="true"] .result-copy {
+  font-size: 0.9rem;
+  line-height: 1.35;
+}
+
+html[data-desktop="true"] .meta {
+  margin-top: auto;
+  padding-top: 0.85rem;
+}
+
+html[data-desktop="true"] .glow {
+  width: 8rem;
+  height: 8rem;
+}
+
+html[data-desktop="true"] .glow-two {
+  bottom: 5rem;
 }
 
 button,

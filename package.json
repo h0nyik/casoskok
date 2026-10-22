@@ -1,6 +1,6 @@
 {
   "name": "hodinovy-skokan",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "private": true,
   "description": "Minimalistická tray utilita: kolik bude hodin za X hodin. Time Hopper desktop app with dark mode and auto-update.",
   "scripts": {
