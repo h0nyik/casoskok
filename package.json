@@ -1,8 +1,8 @@
 {
   "name": "hodinovy-skokan",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
-  "description": "Minimalistická PWA pro výpočet, kolik bude hodin za zadaný počet hodin.",
+  "description": "Minimalistická tray utilita: kolik bude hodin za X hodin. Time Hopper desktop app with dark mode and auto-update.",
   "scripts": {
     "build": "node scripts/build-dist.mjs",
     "desktop:build": "tauri build",
@@ -15,8 +15,11 @@
   },
   "keywords": [
     "pwa",
+    "tray",
+    "menubar",
     "cas",
     "hodiny",
+    "time-hopper",
     "widget"
   ],
   "author": "",

@@ -1,0 +1,25 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Default permissions for Hodinový skokan tray app",
+  "windows": ["main"],
+  "permissions": [
+    "core:default",
+    "core:window:allow-show",
+    "core:window:allow-hide",
+    "core:window:allow-close",
+    "core:window:allow-set-focus",
+    "core:window:allow-set-position",
+    "core:window:allow-outer-position",
+    "core:window:allow-outer-size",
+    "core:window:allow-set-skip-taskbar",
+    "core:window:allow-unminimize",
+    "core:window:allow-is-visible",
+    "updater:default",
+    "process:default",
+    "autostart:default",
+    "allow-get-autostart-enabled",
+    "allow-set-autostart-enabled",
+    "allow-hide-to-tray"
+  ]
+}

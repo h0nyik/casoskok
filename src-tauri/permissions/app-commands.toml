@@ -1,0 +1,14 @@
+[[permission]]
+identifier = "allow-get-autostart-enabled"
+description = "Allows reading whether launch at login is enabled."
+commands.allow = ["get_autostart_enabled"]
+
+[[permission]]
+identifier = "allow-set-autostart-enabled"
+description = "Allows enabling or disabling launch at login."
+commands.allow = ["set_autostart_enabled"]
+
+[[permission]]
+identifier = "allow-hide-to-tray"
+description = "Allows hiding the main window back into the tray."
+commands.allow = ["hide_to_tray"]

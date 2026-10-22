@@ -4,6 +4,9 @@ const targetTime = document.querySelector("#target-time");
 const resultCopy = document.querySelector("#result-copy");
 const currentTime = document.querySelector("#current-time");
 const themeToggle = document.querySelector("#theme-toggle");
+const hideButton = document.querySelector("#hide-button");
+const autostartWrap = document.querySelector("#autostart-wrap");
+const autostartToggle = document.querySelector("#autostart-toggle");
 
 const locale = "cs-CZ";
 const timeFormatter = new Intl.DateTimeFormat(locale, {
@@ -32,6 +35,17 @@ let activeQuote = "";
 
 document.documentElement.dataset.theme = initialTheme;
 themeToggle.setAttribute("aria-pressed", String(initialTheme === "light"));
+
+function isTauri() {
+  return Boolean(window.__TAURI_INTERNALS__ || window.__TAURI__);
+}
+
+async function invoke(command, args = {}) {
+  if (window.__TAURI__?.core?.invoke) {
+    return window.__TAURI__.core.invoke(command, args);
+  }
+  throw new Error("Tauri invoke is unavailable");
+}
 
 function formatTime(date) {
   return timeFormatter.format(date);
@@ -101,18 +115,58 @@ themeToggle.addEventListener("click", () => {
   themeToggle.setAttribute("aria-pressed", String(nextTheme === "light"));
 });
 
+hideButton.addEventListener("click", async () => {
+  if (!isTauri()) {
+    return;
+  }
+  try {
+    await invoke("hide_to_tray");
+  } catch {
+    // Web / PWA mode has no tray.
+  }
+});
+
 input.addEventListener("input", () => {
   activeHours = null;
   activeQuote = "";
   resultCopy.classList.remove("is-error");
 });
 
-window.addEventListener("load", () => {
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("./sw.js").catch(() => {
-      // Desktop wrapper can run without service worker support.
-    });
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && isTauri()) {
+    invoke("hide_to_tray").catch(() => {});
   }
+});
+
+async function initDesktopControls() {
+  if (!isTauri()) {
+    return;
+  }
+
+  document.documentElement.dataset.desktop = "true";
+  autostartWrap.hidden = false;
+
+  try {
+    autostartToggle.checked = await invoke("get_autostart_enabled");
+  } catch {
+    autostartWrap.hidden = true;
+    return;
+  }
+
+  autostartToggle.addEventListener("change", async () => {
+    try {
+      await invoke("set_autostart_enabled", { enabled: autostartToggle.checked });
+    } catch {
+      autostartToggle.checked = !autostartToggle.checked;
+    }
+  });
+}
+
+window.addEventListener("load", () => {
+  if ("serviceWorker" in navigator && !isTauri()) {
+    navigator.serviceWorker.register("./sw.js").catch(() => {});
+  }
+  initDesktopControls();
 });
 
 updateClock();

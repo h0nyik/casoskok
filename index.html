@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#0b130d" />
     <meta
       name="description"
-      content="Minimalistický doplněk pro okamžitý výpočet, kolik bude hodin za zadaný počet hodin."
+      content="Hodinový skokan / Time Hopper — minimalistická tray utilita. Spočítej, kolik bude hodin za X hodin. Dark mode, always on top, auto-update."
     />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="Hodinový skokan" />
@@ -15,7 +15,7 @@
     <link rel="icon" href="./assets/icon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="./assets/icon.svg" />
     <link rel="stylesheet" href="./styles.css" />
-    <title>Hodinový skokan</title>
+    <title>Hodinový skokan — Time Hopper</title>
   </head>
   <body>
     <main class="shell" aria-labelledby="app-title">
@@ -24,8 +24,21 @@
         <div class="glow glow-two" aria-hidden="true"></div>
 
         <header class="hero">
-          <p class="eyebrow">Okamžitý časový skok</p>
-          <h1 id="app-title">Hodinový skokan</h1>
+          <div class="title-row">
+            <div>
+              <p class="eyebrow">Okamžitý časový skok</p>
+              <h1 id="app-title">Hodinový skokan</h1>
+            </div>
+            <button
+              type="button"
+              class="icon-button"
+              id="hide-button"
+              aria-label="Skrýt do lišty"
+              title="Skrýt"
+            >
+              ×
+            </button>
+          </div>
           <p class="subtitle">Zadej počet hodin a hned uvidíš, kolik bude.</p>
         </header>
 
@@ -56,9 +69,15 @@
 
         <footer class="meta">
           <span id="current-time">Teď --:--</span>
-          <button class="ghost-button" type="button" id="theme-toggle" aria-pressed="false">
-            Režim
-          </button>
+          <div class="meta-actions">
+            <label class="autostart" id="autostart-wrap" hidden>
+              <input type="checkbox" id="autostart-toggle" />
+              <span>Po startu</span>
+            </label>
+            <button class="ghost-button" type="button" id="theme-toggle" aria-pressed="false">
+              Režim
+            </button>
+          </div>
         </footer>
       </section>
     </main>

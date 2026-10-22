@@ -53,10 +53,19 @@ jobs:
         uses: tauri-apps/tauri-action@v0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
+          TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
         with:
           tagName: ${{ github.ref_name }}
           releaseName: "Hodinový skokan ${{ github.ref_name }}"
-          releaseBody: "Instalátory pro Hodinového skokana."
-          releaseDraft: true
+          releaseBody: |
+            Tray / menu bar release of Hodinový skokan (Time Hopper).
+
+            - Borderless popover window
+            - System tray / menu bar icon
+            - Hidden Windows console
+            - Auto-update via GitHub Releases
+            - Optional launch at login
+          releaseDraft: false
           prerelease: false
           args: ${{ matrix.args }}
